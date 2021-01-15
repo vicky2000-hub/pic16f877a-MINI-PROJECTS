@@ -1,0 +1,15 @@
+#include<pic.h>
+void main()
+{
+while(1)
+{
+TRISD=0x01; 
+if(PORTD==0x01)
+{
+PORTD=0x02;
+}
+else
+{
+PORTD=0x00;
+}}
+}

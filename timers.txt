@@ -1,0 +1,83 @@
+	Timer0
+
+#include<pic.h>
+void t0delay();
+void main()
+{
+TRISB=0;
+OPTION_REG=0x87;
+while(1)
+{
+PORTB=0xff;
+t0delay();
+PORTB=0x00;
+t0delay();
+}
+}
+void t0delay()
+{
+int i;
+for(i=0;i<2;i++)
+{
+while(!T0IF)
+T0IF=1;
+}
+}
+
+
+
+	Timer1
+
+
+#include<pic.h>
+void t1delay();
+void main()
+{
+TRISB=0;
+T1CON=0X01;
+while(1)
+{
+PORTB=0XFF;
+t1delay();
+PORTB=0X00;
+t1delay();
+}
+}
+void t1delay()
+{
+int i;
+for(i=0;i<8;i++)
+{
+TMR1H=TMR1L=0;
+while(!TMR1IF);
+TMR1IF=0;
+}
+}
+
+
+	Timer2
+
+
+#include<pic.h>
+void t2delay();
+void main()
+{
+TRISB=0;
+T2CON=0X04;
+while(1)
+{
+PORTB=0XFF;
+t2delay();
+PORTB=0X00;
+t2delay();
+}
+}
+void t2delay()
+{
+int i;
+for(i=0;i<8;i++)
+{
+while(!TMR2IF);
+TMR2IF=0;
+}
+}

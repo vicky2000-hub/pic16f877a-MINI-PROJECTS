@@ -1,0 +1,17 @@
+#include<pic.h>
+void delay()
+{
+unsigned int a;
+for(a=0;a<10000;a++);
+}
+void main()
+{
+TRISB=0x00;//output
+while(1)
+{
+PORTB=0xFF;// on
+delay();
+PORTB=0x00;//off
+delay();
+}
+}
